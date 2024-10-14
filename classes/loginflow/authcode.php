@@ -372,6 +372,9 @@ class authcode extends base {
                 if (empty($upn)) {
                     $upn = $idtoken->claim('unique_name');
                 }
+
+                if (empty($upn)) {
+                    $upn = $idtoken->claim('sub');
             }
             $userrec = $DB->count_records_sql('SELECT COUNT(*)
                                                  FROM {user}
